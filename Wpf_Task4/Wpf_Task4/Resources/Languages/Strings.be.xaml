@@ -43,7 +43,6 @@
     <sys:String x:Key="EditProject">Рэдагаваць праект</sys:String>
     <sys:String x:Key="EditTask">Рэдагаваць задачу</sys:String>
     <sys:String x:Key="EnterLogin">Увядзіце лагін!</sys:String>
-    <sys:String x:Key="EnterPassword">Увядзіце пароль!</sys:String>
     <sys:String x:Key="UserAlreadyExists">Такі лагін ужо існуе!</sys:String>
     <sys:String x:Key="RegistrationSuccess">Карыстальнік '{0}' паспяхова зарэгістраваны! ID = {1}</sys:String>
     <sys:String x:Key="RegistrationError">Памылка пры рэгістрацыі</sys:String>

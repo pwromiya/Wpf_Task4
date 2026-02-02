@@ -43,7 +43,6 @@
     <sys:String x:Key="EditProject">Редактировать проект</sys:String>
     <sys:String x:Key="EditTask">Редактировать задачу</sys:String>
     <sys:String x:Key="EnterLogin">Введите логин!</sys:String>
-    <sys:String x:Key="EnterPassword">Введите пароль!</sys:String>
     <sys:String x:Key="UserAlreadyExists">Такой логин уже существует!</sys:String>
     <sys:String x:Key="RegistrationSuccess">Пользователь '{0}' успешно зарегистрирован! ID = {1}</sys:String>
     <sys:String x:Key="RegistrationError">Ошибка при регистрации</sys:String>

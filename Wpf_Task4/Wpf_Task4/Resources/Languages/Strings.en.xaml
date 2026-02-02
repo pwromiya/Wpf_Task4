@@ -43,7 +43,6 @@
     <sys:String x:Key="EditProject">Edit Project</sys:String>
     <sys:String x:Key="EditTask">Edit Task</sys:String>
     <sys:String x:Key="EnterLogin">Enter login!</sys:String>
-    <sys:String x:Key="EnterPassword">Enter password!</sys:String>
     <sys:String x:Key="UserAlreadyExists">This login already exists!</sys:String>
     <sys:String x:Key="RegistrationSuccess">User '{0}' successfully registered! ID = {1}</sys:String>
     <sys:String x:Key="RegistrationError">Registration error</sys:String>
