@@ -1,0 +1,47 @@
+﻿<!-- Add Project modal/user control -->
+<UserControl x:Class="Wpf_Task4.Views.UserControls.AddProjectControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Background="White"
+            Padding="20"
+            CornerRadius="8"
+            Width="350">
+
+        <StackPanel>
+            <!-- Header -->
+            <TextBlock Text="Добавление проекта"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="0,0,0,15"/>
+
+            <!-- Project name input -->
+            <TextBlock Text="Название"/>
+            <TextBox Text="{Binding NewProjectName, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,5,0,10"/>
+
+            <!-- Project description input -->
+            <TextBlock Text="Описание"/>
+            <TextBox Text="{Binding NewProjectDescription}"
+                     Height="80"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     Margin="0,5,0,15"/>
+
+            <!-- Action buttons -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Content="Отмена"
+                        Margin="0,0,10,0"
+                        Click="Cancel_Click"/>
+                <!-- Code-behind handler -->
+
+                <Button Content="Добавить"
+                        Command="{Binding AddProjectCommand}"/>
+                <!-- MVVM command -->
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+</UserControl>

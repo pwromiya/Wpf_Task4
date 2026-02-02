@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Add">Дадаць</sys:String>
+    <sys:String x:Key="AddingProj">Даданне праекта</sys:String>
+    <sys:String x:Key="AddTask">Дадаць задачу</sys:String>
+    <sys:String x:Key="Cancel">Адмена</sys:String>
+    <sys:String x:Key="CurUser">Цяперашні карыстальнік</sys:String>
+    <sys:String x:Key="Del">Выдаліць</sys:String>
+    <sys:String x:Key="Desc">Апісанне</sys:String>
+    <sys:String x:Key="EditDesc">Рэдагаваць апісанне</sys:String>
+    <sys:String x:Key="InvitationToLogIn">Ужо ёсць акаўнт? Увайсці</sys:String>
+    <sys:String x:Key="Login">Лагін</sys:String>
+    <sys:String x:Key="LogInAcc">Увайсці</sys:String>
+    <sys:String x:Key="LogOut">Выйсці са свайго акаўнта</sys:String>
+    <sys:String x:Key="Name">Назва</sys:String>
+    <sys:String x:Key="NewPassw">Новы пароль</sys:String>
+    <sys:String x:Key="Password">Пароль</sys:String>
+    <sys:String x:Key="PlusProj">+ Праект</sys:String>
+    <sys:String x:Key="PlusTask">+ Новая задача</sys:String>
+    <sys:String x:Key="Profile">Профіль</sys:String>
+    <sys:String x:Key="Projects">Праекты</sys:String>
+    <sys:String x:Key="ProjInf">Інфармацыя аб праекце</sys:String>
+    <sys:String x:Key="ProjTasks">Задачы праекта</sys:String>
+    <sys:String x:Key="Register">Зарэгістравацца</sys:String>
+    <sys:String x:Key="Save">Захаваць</sys:String>
+    <sys:String x:Key="Edit">Рэдагаваць</sys:String>
+    <sys:String x:Key="Created">Створаны</sys:String>
+    <sys:String x:Key="NoDescription">(няма апісання)</sys:String>
+    <sys:String x:Key="SelectProject">👈 Выберыце праект злева, каб убачыць дэталі і задачы</sys:String>
+    <sys:String x:Key="ID">ID</sys:String>
+    <sys:String x:Key="TaskCreated">Створана</sys:String>
+    <sys:String x:Key="MainWindow">Галоўнае акно</sys:String>
+    <sys:String x:Key="EnterPassword">Увядзіце новы пароль</sys:String>
+    <sys:String x:Key="PasswordUpdated">Пароль паспяхова абноўлены</sys:String>
+    <sys:String x:Key="ErrorSaving">Памылка захавання</sys:String>
+    <sys:String x:Key="Confirm">Пацвярджэнне</sys:String>
+    <sys:String x:Key="DeleteProjectConfirm">Выдаліць праект '{0}'?</sys:String>
+    <sys:String x:Key="DeleteTaskConfirm">Выдаліць задачу '{0}'?</sys:String>
+    <sys:String x:Key="EnterProjectName">Увядзіце назву праекта</sys:String>
+    <sys:String x:Key="EnterTaskTitle">Увядзіце назву задачы</sys:String>
+    <sys:String x:Key="EditProject">Рэдагаваць праект</sys:String>
+    <sys:String x:Key="EditTask">Рэдагаваць задачу</sys:String>
+    <sys:String x:Key="EnterLogin">Увядзіце лагін!</sys:String>
+    <sys:String x:Key="EnterPassword">Увядзіце пароль!</sys:String>
+    <sys:String x:Key="UserAlreadyExists">Такі лагін ужо існуе!</sys:String>
+    <sys:String x:Key="RegistrationSuccess">Карыстальнік '{0}' паспяхова зарэгістраваны! ID = {1}</sys:String>
+    <sys:String x:Key="RegistrationError">Памылка пры рэгістрацыі</sys:String>
+    <sys:String x:Key="EnterCredentials">Увядзіце лагін і пароль</sys:String>
+    <sys:String x:Key="InvalidLoginOrPassword">Няправільны лагін або пароль</sys:String>
+    <sys:String x:Key="LoginSuccess">Уваход выкананы паспяхова</sys:String>
+
+</ResourceDictionary>
