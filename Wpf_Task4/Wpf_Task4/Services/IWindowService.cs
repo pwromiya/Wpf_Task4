@@ -6,5 +6,6 @@ public interface IWindowService
     void ShowRegister(); // Opens registration window
     void ShowLogin();    // Opens login window
     void CloseCurrent(); // Closes current window
+    void ClosePrevious();
     void ShowMain();     // Opens main application window
 }

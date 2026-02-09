@@ -160,8 +160,8 @@ public class MainViewModel : INotifyPropertyChanged
     // ================= LOGOUT =================
     private void Logout(object? obj)
     {
-        _windowService.CloseCurrent(); // Close main window
-        _windowService.ShowLogin();    // Show login window
+        _windowService.ShowRegister();    // Show register window
+        _windowService.ClosePrevious(); // Close main window
     }
 
     // ================= SAVE PASSWORD =================

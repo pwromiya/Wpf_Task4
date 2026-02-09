@@ -95,8 +95,10 @@ public class RegisterViewModel : INotifyPropertyChanged
 
             _currentUserService.CurrentUser = user; // Set current user session
 
-            _windowService.CloseCurrent(); // Close registration window
+
             _windowService.ShowMain();     // Open main application window
+            _windowService.ClosePrevious(); // Close registration window
+
         }
         catch (Exception ex)
         {
@@ -121,8 +123,9 @@ public class RegisterViewModel : INotifyPropertyChanged
     // Navigate to login window
     private void OpenLogin(object obj)
     {
-        _windowService.CloseCurrent();  // Close registration window
         _windowService.ShowLogin();     // Open login window
+        _windowService.ClosePrevious();  // Close registration window
+
     }
 
     // INotifyPropertyChanged implementation

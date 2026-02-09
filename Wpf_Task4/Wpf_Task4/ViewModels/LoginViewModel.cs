@@ -45,8 +45,9 @@ public class LoginViewModel : INotifyPropertyChanged
         if (user != null && HashPassword(password, user.PasswordSalt) == user.PasswordHash)
         {
             _currentUserService.CurrentUser = user; // Set current user session
-            _windowService.CloseCurrent();          // Close login window
             _windowService.ShowMain();              // Open main application window
+            _windowService.ClosePrevious();          // Close login window
+
         }
         else
         {

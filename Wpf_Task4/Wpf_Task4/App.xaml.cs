@@ -6,13 +6,13 @@ using Wpf_Task4.Data;
 using Wpf_Task4.Services;
 using Wpf_Task4.ViewModels;
 using Wpf_Task4.Views;
-
 namespace Wpf_Task4;
 
 // Main application class with DI configuration
 public partial class App : Application
 {
     public static IServiceProvider ServiceProvider { get; private set; }
+
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -56,7 +56,11 @@ public partial class App : Application
         Current.Resources.Add("LangVM", ServiceProvider.GetRequiredService<LanguageViewModel>());
 
         // Launch startup window (Registration)
-        var window = ServiceProvider.GetRequiredService<RegisterView>();
-        window.Show();
+
+        //var window = ServiceProvider.GetRequiredService<RegisterView>();
+        //window.Show();
+
+        var windowService = ServiceProvider.GetRequiredService<IWindowService>();
+        windowService.ShowRegister();
     }
 }

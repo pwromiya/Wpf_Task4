@@ -8,10 +8,12 @@ namespace Wpf_Task4.Services;
 public class WindowService : IWindowService
 {
     private Window _currentWindow; // Track currently opened window
+    private Window _previousWindow;
 
     public void ShowMain()
     {
         var window = App.ServiceProvider.GetRequiredService<MainView>();
+        _previousWindow = _currentWindow;
         _currentWindow = window;
         window.Show();
     }
@@ -19,6 +21,7 @@ public class WindowService : IWindowService
     public void ShowRegister()
     {
         var window = App.ServiceProvider.GetRequiredService<RegisterView>();
+        _previousWindow = _currentWindow;
         _currentWindow = window;
         window.Show();
     }
@@ -26,6 +29,7 @@ public class WindowService : IWindowService
     public void ShowLogin()
     {
         var window = App.ServiceProvider.GetRequiredService<LoginView>();
+        _previousWindow = _currentWindow;
         _currentWindow = window;
         window.Show();
     }
@@ -33,5 +37,10 @@ public class WindowService : IWindowService
     public void CloseCurrent()
     {
         _currentWindow?.Close(); // Close current window if exists
+    }
+
+    public void ClosePrevious()
+    {
+        _previousWindow?.Close(); // Close previous window if exists
     }
 }
