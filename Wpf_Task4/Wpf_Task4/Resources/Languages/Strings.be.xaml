@@ -9,12 +9,13 @@
     <sys:String x:Key="CurUser">Цяперашні карыстальнік</sys:String>
     <sys:String x:Key="Del">Выдаліць</sys:String>
     <sys:String x:Key="Desc">Апісанне</sys:String>
-    <sys:String x:Key="EditDesc">Рэдагаваць апісанне</sys:String>
     <sys:String x:Key="InvitationToLogIn">Ужо ёсць акаўнт? Увайсці</sys:String>
     <sys:String x:Key="Login">Лагін</sys:String>
     <sys:String x:Key="LogInAcc">Увайсці</sys:String>
     <sys:String x:Key="LogOut">Выйсці са свайго акаўнта</sys:String>
     <sys:String x:Key="Name">Назва</sys:String>
+    <sys:String x:Key="TaskName">Назва задачы</sys:String>
+    <sys:String x:Key="ProjName">Назва праекта</sys:String>
     <sys:String x:Key="NewPassw">Новы пароль</sys:String>
     <sys:String x:Key="Password">Пароль</sys:String>
     <sys:String x:Key="PlusProj">+ Праект</sys:String>
@@ -28,7 +29,6 @@
     <sys:String x:Key="Edit">Рэдагаваць</sys:String>
     <sys:String x:Key="Created">Створаны</sys:String>
     <sys:String x:Key="NoDescription">(няма апісання)</sys:String>
-    <sys:String x:Key="SelectProject">👈 Выберыце праект злева, каб убачыць дэталі і задачы</sys:String>
     <sys:String x:Key="ID">ID</sys:String>
     <sys:String x:Key="TaskCreated">Створана</sys:String>
     <sys:String x:Key="MainWindow">Галоўнае акно</sys:String>
@@ -49,5 +49,17 @@
     <sys:String x:Key="EnterCredentials">Увядзіце лагін і пароль</sys:String>
     <sys:String x:Key="InvalidLoginOrPassword">Няправільны лагін або пароль</sys:String>
     <sys:String x:Key="LoginSuccess">Уваход выкананы паспяхова</sys:String>
+
+    <sys:String x:Key="DbReadFailed">Памылка пры чытанні з базы дадзеных.</sys:String>
+    <sys:String x:Key="DbAddFailed">Памылка пры даданні запісу ў базу.</sys:String>
+    <sys:String x:Key="DbDeleteFailed">Памылка пры выдаленні запісу.</sys:String>
+    <sys:String x:Key="DbSaveFailed">Памылка пры захаванні змяненняў.</sys:String>
+    <sys:String x:Key="ProjectNameEmpty">Назва праекта не можа быць пустой.</sys:String>
+    <sys:String x:Key="TaskNameEmpty">Назва задачы не можа быць пустой.</sys:String>
+    <sys:String x:Key="UnexpectedError">Адбылася нечаканая памылка.</sys:String>
+    <sys:String x:Key="PasswordEmpty">Пароль не можа быць пустым</sys:String>
+    <sys:String x:Key="UserNotFound">Карыстальнік не знойдзены</sys:String>
+
+
 
 </ResourceDictionary>

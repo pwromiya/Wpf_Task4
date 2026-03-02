@@ -2,17 +2,17 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace Wpf_Task4.Converters;
+namespace Wpf_Task4.UI.Converters;
 
 // Converts null values to Visibility for UI controls
-// Optional parameter 'true' inverts logic (shows when null)
+
 public class NullToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         bool invert = false;
 
-        // Check for inversion parameter (e.g., ConverterParameter='true')
+        // Check for inversion parameter
         if (parameter != null && bool.TryParse(parameter.ToString(), out bool param))
         {
             invert = param;
@@ -29,7 +29,7 @@ public class NullToVisibilityConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        // One-way conversion only (UI to source not needed)
+        // One-way conversion only
         throw new NotImplementedException();
     }
 }

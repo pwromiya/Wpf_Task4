@@ -1,10 +1,10 @@
 ﻿<!-- Language switcher component (standalone UserControl) -->
-<UserControl x:Class="Wpf_Task4.Views.LanguageSwitcher"
+<UserControl x:Class="Wpf_Task4.UI.Views.UserControls.LanguageSwitcher"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Height="40" Width="200">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <!-- Language selection buttons (bound to DataContext commands) -->
         <Button Content="RU" 
                 Command="{Binding SetLangRuCommand}"

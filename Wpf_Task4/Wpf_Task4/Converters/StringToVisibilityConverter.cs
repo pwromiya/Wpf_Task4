@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace Wpf_Task4.Converters;
+namespace Wpf_Task4.UI.Converters;
 
 // Converts string to Visibility: Visible if string has content, Collapsed if empty/null
 public class StringToVisibilityConverter : IValueConverter
@@ -15,7 +15,7 @@ public class StringToVisibilityConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        // One-way converter - no reverse conversion needed
+        // One-way converter
         throw new NotImplementedException();
     }
 }

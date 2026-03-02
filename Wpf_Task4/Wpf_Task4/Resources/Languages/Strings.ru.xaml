@@ -9,12 +9,13 @@
     <sys:String x:Key="CurUser">Текущий пользователь</sys:String>
     <sys:String x:Key="Del">Удалить</sys:String>
     <sys:String x:Key="Desc">Описание</sys:String>
-    <sys:String x:Key="EditDesc">Редактировать описание</sys:String>
     <sys:String x:Key="InvitationToLogIn">Уже есть аккаунт? Войти</sys:String>
     <sys:String x:Key="Login">Логин</sys:String>
     <sys:String x:Key="LogInAcc">Войти</sys:String>
     <sys:String x:Key="LogOut">Выйти из своего аккаунта</sys:String>
     <sys:String x:Key="Name">Название</sys:String>
+    <sys:String x:Key="TaskName">Название задачи</sys:String>
+    <sys:String x:Key="ProjName">Название проекта</sys:String>
     <sys:String x:Key="NewPassw">Новый пароль</sys:String>
     <sys:String x:Key="Password">Пароль</sys:String>
     <sys:String x:Key="PlusProj">+ Проект</sys:String>
@@ -28,7 +29,6 @@
     <sys:String x:Key="Edit">Редактировать</sys:String>
     <sys:String x:Key="Created">Создан</sys:String>
     <sys:String x:Key="NoDescription">(нет описания)</sys:String>
-    <sys:String x:Key="SelectProject">👈 Выберите проект слева, чтобы увидеть детали и задачи</sys:String>
     <sys:String x:Key="ID">ID</sys:String>
     <sys:String x:Key="TaskCreated">Создано</sys:String>
     <sys:String x:Key="MainWindow">Главное окно</sys:String>
@@ -49,5 +49,15 @@
     <sys:String x:Key="EnterCredentials">Введите логин и пароль</sys:String>
     <sys:String x:Key="InvalidLoginOrPassword">Неверный логин или пароль</sys:String>
     <sys:String x:Key="LoginSuccess">Вход выполнен успешно</sys:String>
+
+    <sys:String x:Key="DbReadFailed">Ошибка при чтении из базы данных.</sys:String>
+    <sys:String x:Key="DbAddFailed">Ошибка при добавлении записи в базу.</sys:String>
+    <sys:String x:Key="DbDeleteFailed">Ошибка при удалении записи.</sys:String>
+    <sys:String x:Key="DbSaveFailed">Ошибка при сохранении изменений.</sys:String>
+    <sys:String x:Key="ProjectNameEmpty">Название проекта не может быть пустым.</sys:String>
+    <sys:String x:Key="TaskNameEmpty">Название задачи не может быть пустым.</sys:String>
+    <sys:String x:Key="UnexpectedError">Произошла непредвиденная ошибка.</sys:String>
+    <sys:String x:Key="PasswordEmpty">Пароль не может быть пустым</sys:String>
+    <sys:String x:Key="UserNotFound">Пользователь не найден</sys:String>
 
 </ResourceDictionary>

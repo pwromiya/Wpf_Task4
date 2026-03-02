@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Wpf_Task4.Views;
+namespace Wpf_Task4.UI.Views.UserControls;
 
 // Language switcher UserControl
 public partial class LanguageSwitcher : UserControl
@@ -13,9 +13,9 @@ public partial class LanguageSwitcher : UserControl
         // Set DataContext when control loads (LanguageViewModel from app resources)
         this.Loaded += (s, e) =>
         {
-            if (Application.Current.Resources.Contains("LangVM"))
+            if (System.Windows.Application.Current.Resources.Contains("LangVM"))
             {
-                this.DataContext = Application.Current.Resources["LangVM"];
+                this.DataContext = System.Windows.Application.Current.Resources["LangVM"];
             }
         };
     }

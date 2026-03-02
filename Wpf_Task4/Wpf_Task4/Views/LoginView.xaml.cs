@@ -1,26 +1,26 @@
 ﻿using System.Windows;
-using Wpf_Task4.ViewModels;
+using Wpf_Task4.UI.ViewModels;
 
-namespace Wpf_Task4.Views;
-
-// Login window code-behind
-public partial class LoginView : Window
+namespace Wpf_Task4.UI.Views
 {
-    public LoginView(LoginViewModel vm)
+    public partial class LoginView : Window
     {
-        InitializeComponent();
-        DataContext = vm; // Set ViewModel for data binding
-    }
-
-    // Handle login button click
-    private void LoginButton_Click(object sender, RoutedEventArgs e)
-    {
-        var vm = DataContext as LoginViewModel;
-        if (vm != null)
+        public LoginView(LoginViewModel vm)
         {
-            // Pass password to ViewModel for authentication
-            vm.LoginExecute(PasswordBox.Password);
-            PasswordBox.Clear(); // Clear password field after login attempt
+            InitializeComponent();
+            DataContext = vm; // Устанавливаем VM для биндинга
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModel vm)
+            {
+                // Передаём пароль из PasswordBox в метод VM
+                vm.LoginAsync(PasswordBox.Password);
+
+                // Очищаем поле пароля
+                PasswordBox.Clear();
+            }
         }
     }
 }

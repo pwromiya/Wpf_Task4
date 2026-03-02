@@ -1,25 +1,27 @@
 ﻿using System.Windows;
-using Wpf_Task4.ViewModels;
+using Wpf_Task4.UI.ViewModels;
 
-namespace Wpf_Task4.Views;
-
-// Registration window code-behind
-public partial class RegisterView : Window
+namespace Wpf_Task4.UI.Views
 {
-    public RegisterView(RegisterViewModel vm)
+    public partial class RegisterView : Window
     {
-        InitializeComponent();
-        DataContext = vm; // Set ViewModel for data binding
-    }
-
-    // Handle register button click (uses PasswordBox which can't be bound directly)
-    private void RegisterButton_Click(object sender, RoutedEventArgs e)
-    {
-        var vm = DataContext as RegisterViewModel;
-        if (vm != null)
+        public RegisterView(RegisterViewModel vm)
         {
-            vm.Register(PasswordBox.Password); // Pass password to ViewModel
-            PasswordBox.Clear(); // Clear password field after submission
+            InitializeComponent();
+            DataContext = vm; // Устанавливаем VM для биндинга
         }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is RegisterViewModel vm)
+            {
+                // Передаём пароль из PasswordBox в метод VM
+                vm.RegisterAsync(PasswordBox.Password);
+
+                // Очищаем поле пароля
+                PasswordBox.Clear();
+            }
+        }
+
     }
 }

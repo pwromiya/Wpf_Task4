@@ -1,11 +1,11 @@
-﻿namespace Wpf_Task4.Services;
+﻿namespace Wpf_Task4.UI.Services;
 
 // Service interface for window management and navigation
 public interface IWindowService
 {
-    void ShowRegister(); // Opens registration window
-    void ShowLogin();    // Opens login window
-    void CloseCurrent(); // Closes current window
+    void ShowRegister();
+    void ShowLogin();
+    void CloseCurrent();
     void ClosePrevious();
-    void ShowMain();     // Opens main application window
+    void ShowMain();
 }

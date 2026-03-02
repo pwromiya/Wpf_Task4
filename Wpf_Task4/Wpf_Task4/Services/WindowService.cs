@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using Wpf_Task4.Views;
+using Wpf_Task4.UI.Views;
 
-namespace Wpf_Task4.Services;
+namespace Wpf_Task4.UI.Services;
 
 // Window navigation service implementation
 public class WindowService : IWindowService
 {
-    private Window _currentWindow; // Track currently opened window
+    private Window _currentWindow;
     private Window _previousWindow;
 
     public void ShowMain()
@@ -41,6 +41,6 @@ public class WindowService : IWindowService
 
     public void ClosePrevious()
     {
-        _previousWindow?.Close(); // Close previous window if exists
+        _previousWindow?.Close(); // Close previous wiщndow if exists
     }
 }

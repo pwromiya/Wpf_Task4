@@ -1,18 +1,19 @@
 ﻿using System.ComponentModel;
-using System.Text;
-using System.Windows;
-using Wpf_Task4.Data;
-using Wpf_Task4.Services;
-using System.Security.Cryptography;
+using System.Windows.Input;
+using Wpf_Task4.Application.Interfaces;
+using Wpf_Task4.Commands;
+using Wpf_Task4.UI.Services;
 
-namespace Wpf_Task4.ViewModels;
+namespace Wpf_Task4.UI.ViewModels;
 
-// ViewModel for login functionality
+// ViewModel for user login functionality (LoginView)
 public class LoginViewModel : INotifyPropertyChanged
 {
-    private readonly AppDbContext _dbContext;
+    private readonly IUserService _userService; // The main logic service of this model
     private readonly IWindowService _windowService;
-    private readonly ICurrentUserService _currentUserService;
+    private readonly IMessageService _messageService;
+    private readonly ILanguageService _languageService;
+    private readonly ICurrentUserService _currentUserService;   // Current user info
 
     private string _login;
     public string Login
@@ -25,45 +26,47 @@ public class LoginViewModel : INotifyPropertyChanged
         }
     }
 
-    public LoginViewModel(AppDbContext db, IWindowService ws, ICurrentUserService cu)
+    public ICommand LoginCommand { get; }
+
+    public LoginViewModel(
+        IUserService userService,
+        ICurrentUserService currentUserService,
+        IWindowService windowService,
+        IMessageService messageService,
+        ILanguageService languageService)
     {
-        _dbContext = db;
-        _windowService = ws;
-        _currentUserService = cu;
+        _userService = userService;
+        _currentUserService = currentUserService;
+        _windowService = windowService;
+        _messageService = messageService;
+        _languageService = languageService;
+
+        LoginCommand = new RelayCommand(async param => await LoginAsync(param?.ToString()));
     }
 
-    // Execute login with provided password (called from code-behind)
-    public void LoginExecute(string password)
+    // Perform login
+    public async Task LoginAsync(string password)
     {
         if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(password))
         {
-            MessageBox.Show(LocalizationManager.GetString("EnterCredentials"));
+            _messageService.ShowWarning(_languageService.GetString("EnterCredentials"));
             return;
         }
 
-        var user = _dbContext.Users.FirstOrDefault(u => u.Login == Login);
-        if (user != null && HashPassword(password, user.PasswordSalt) == user.PasswordHash)
-        {
-            _currentUserService.CurrentUser = user; // Set current user session
-            _windowService.ShowMain();              // Open main application window
-            _windowService.ClosePrevious();          // Close login window
+        var user = await _userService.LoginAsync(Login, password);
 
+        if (user != null)
+        {
+            _currentUserService.CurrentUser = user;
+            _windowService.ShowMain();
+            _windowService.ClosePrevious(); // Close login window
         }
         else
         {
-            MessageBox.Show(LocalizationManager.GetString("InvalidLoginOrPassword"));
+            _messageService.ShowError(_languageService.GetString("InvalidLoginOrPassword"));
         }
     }
 
-    // Hash password with salt using SHA256
-    private string HashPassword(string password, string salt)
-    {
-        using var sha = SHA256.Create();
-        var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(salt + password));
-        return Convert.ToBase64String(bytes);
-    }
-
-    // INotifyPropertyChanged implementation
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

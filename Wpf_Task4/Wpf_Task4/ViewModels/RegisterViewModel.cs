@@ -1,21 +1,20 @@
 ﻿using System.ComponentModel;
-using System.Security.Cryptography;
-using System.Text;
-using System.Windows;
 using System.Windows.Input;
+using Wpf_Task4.Application.Interfaces;
 using Wpf_Task4.Commands;
-using Wpf_Task4.Data;
-using Wpf_Task4.Models;
-using Wpf_Task4.Services;
+using Wpf_Task4.Domain.Common;
+using Wpf_Task4.UI.Services;
 
-namespace Wpf_Task4.ViewModels;
+namespace Wpf_Task4.UI.ViewModels;
 
-// ViewModel for user registration functionality
+// ViewModel for user registration functionality (RegisterView)
+
 public class RegisterViewModel : INotifyPropertyChanged
 {
-    private readonly AppDbContext _dbContext;
+    private readonly IUserService _userService; // The main logic service of this model
     private readonly IWindowService _windowService;
-    private readonly ICurrentUserService _currentUserService;
+    private readonly IMessageService _messageService;
+    private readonly ILanguageService _languageService; // Current user info
 
     private string _login;
     public string Login
@@ -28,107 +27,67 @@ public class RegisterViewModel : INotifyPropertyChanged
         }
     }
 
-    // Commands
     public ICommand RegisterCommand { get; }
     public ICommand OpenLoginCommand { get; }
     public ICommand SetLangRuCommand { get; }
     public ICommand SetLangEnCommand { get; }
     public ICommand SetLangBeCommand { get; }
 
-    public RegisterViewModel(AppDbContext dbContext, IWindowService windowService,
-                             ICurrentUserService currentUserService, ILanguageService lang)
+    public RegisterViewModel(
+        IUserService userService,
+        IWindowService windowService,
+        IMessageService messageService,
+        ILanguageService languageService)
     {
-        // Language commands
-        SetLangRuCommand = new RelayCommand(_ => lang.ChangeLanguage("ru"));
-        SetLangEnCommand = new RelayCommand(_ => lang.ChangeLanguage("en"));
-        SetLangBeCommand = new RelayCommand(_ => lang.ChangeLanguage("be"));
-
-        _dbContext = dbContext;
+        _userService = userService;
         _windowService = windowService;
-        _currentUserService = currentUserService;
+        _messageService = messageService;
+        _languageService = languageService;
 
-        // Initialize commands with validation
-        RegisterCommand = new RelayCommand(param => Register(param?.ToString()), CanRegister);
-        OpenLoginCommand = new RelayCommand(obj => OpenLogin(obj));
+        RegisterCommand = new RelayCommand(async param => await RegisterAsync(param?.ToString()));
+        OpenLoginCommand = new RelayCommand(_ =>
+        {
+            _windowService.ShowLogin();
+            _windowService.ClosePrevious(); // Close register window
+        });
+
+        // Language commands
+        SetLangRuCommand = new RelayCommand(_ => _languageService.ChangeLanguage("ru"));
+        SetLangEnCommand = new RelayCommand(_ => _languageService.ChangeLanguage("en"));
+        SetLangBeCommand = new RelayCommand(_ => _languageService.ChangeLanguage("be"));
     }
 
-    // Register user with provided password (called from code-behind)
-    public void Register(string password)
+    // Perform registration
+    public async Task RegisterAsync(string password)
     {
         if (string.IsNullOrWhiteSpace(Login))
         {
-            MessageBox.Show(LocalizationManager.GetString("EnterLogin"));
+            _messageService.ShowWarning(_languageService.GetString("EnterLogin"));
             return;
         }
+
         if (string.IsNullOrWhiteSpace(password))
         {
-            MessageBox.Show(LocalizationManager.GetString("EnterPassword"));
+            _messageService.ShowWarning(_languageService.GetString("EnterPassword"));
             return;
         }
-
-        // Check if login already exists
-        if (_dbContext.Users.Any(u => u.Login == Login))
-        {
-            MessageBox.Show(LocalizationManager.GetString("UserAlreadyExists"));
-            return;
-        }
-
-        // Generate salt and hash for password
-        var salt = Guid.NewGuid().ToString();
-        var user = new User
-        {
-            Login = Login,
-            PasswordSalt = salt,
-            PasswordHash = HashPassword(password, salt)
-        };
 
         try
         {
-            _dbContext.Users.Add(user);
-            _dbContext.SaveChanges();
+            // Informing the user about registration by message service
+            var user = await _userService.RegisterAsync(Login, password);
+            _messageService.ShowInformation(
+                string.Format(_languageService.GetString("RegistrationSuccess"), user.Login, user.Id));
 
-            string successMessage = string.Format(LocalizationManager.GetString("RegistrationSuccess"), Login, user.Id);
-            MessageBox.Show(successMessage);
-
-            Login = string.Empty; // Clear login field
-            OnPropertyChanged(nameof(Login));
-
-            _currentUserService.CurrentUser = user; // Set current user session
-
-
-            _windowService.ShowMain();     // Open main application window
-            _windowService.ClosePrevious(); // Close registration window
-
+            _windowService.ShowMain();
+            _windowService.ClosePrevious();  // Close register window
         }
-        catch (Exception ex)
+        catch (AppException ex)
         {
-            MessageBox.Show($"{LocalizationManager.GetString("RegistrationError")}: {ex.Message}");
+            _messageService.ShowWarning(_languageService.GetString(ex.UserMessage));
         }
     }
 
-    // Validation for registration command
-    private bool CanRegister(object parameter)
-    {
-        return !string.IsNullOrWhiteSpace(Login);
-    }
-
-    // Hash password with salt using SHA256
-    private string HashPassword(string password, string salt)
-    {
-        using var sha = SHA256.Create();
-        var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(salt + password));
-        return Convert.ToBase64String(bytes);
-    }
-
-    // Navigate to login window
-    private void OpenLogin(object obj)
-    {
-        _windowService.ShowLogin();     // Open login window
-        _windowService.ClosePrevious();  // Close registration window
-
-    }
-
-    // INotifyPropertyChanged implementation
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

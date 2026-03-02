@@ -1,11 +1,13 @@
 ﻿using System.Windows;
+using Wpf_Task4.Application.Interfaces;
+namespace Wpf_Task4.UI.Services;
 
-// Implementation for changing application language at runtime
+// Service for changing application language at runtime
 public class LanguageService : ILanguageService
 {
     public void ChangeLanguage(string culture)
     {
-        // Create ResourceDictionary for the specified culture/language
+        // Create ResourceDictionary for the specified language
         var dict = new ResourceDictionary
         {
             Source = new Uri(
@@ -14,7 +16,13 @@ public class LanguageService : ILanguageService
         };
 
         // Replace current language resources with new ones
-        Application.Current.Resources.MergedDictionaries.Clear();
-        Application.Current.Resources.MergedDictionaries.Add(dict);
+        System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
+        System.Windows.Application.Current.Resources.MergedDictionaries.Add(dict);
+    }
+
+    public string GetString(string key)
+    {
+        // Take a string from the application resources
+        return System.Windows.Application.Current.Resources[key] as string ?? key;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using Wpf_Task4.ViewModels;
+using Wpf_Task4.UI.ViewModels;
 
-namespace Wpf_Task4.Views;
+namespace Wpf_Task4.UI.Views;
 
 // Main application window
 public partial class MainView : Window
@@ -12,9 +12,9 @@ public partial class MainView : Window
         DataContext = viewModel;
 
         // Share LanguageViewModel from application resources to this window
-        if (Application.Current.Resources.Contains("LangVM"))
+        if (System.Windows.Application.Current.Resources.Contains("LangVM"))
         {
-            this.Resources["LangVM"] = Application.Current.Resources["LangVM"];
+            this.Resources["LangVM"] = System.Windows.Application.Current.Resources["LangVM"];
         }
     }
 }

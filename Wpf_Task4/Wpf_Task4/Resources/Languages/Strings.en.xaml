@@ -9,12 +9,13 @@
     <sys:String x:Key="CurUser">Current user</sys:String>
     <sys:String x:Key="Del">Delete</sys:String>
     <sys:String x:Key="Desc">Description</sys:String>
-    <sys:String x:Key="EditDesc">Edit description</sys:String>
     <sys:String x:Key="InvitationToLogIn">Already have an account? Log in</sys:String>
     <sys:String x:Key="Login">Login</sys:String>
     <sys:String x:Key="LogInAcc">Log in</sys:String>
     <sys:String x:Key="LogOut">Log out of your account</sys:String>
     <sys:String x:Key="Name">Name</sys:String>
+    <sys:String x:Key="TaskName">Task name</sys:String>
+    <sys:String x:Key="ProjName">Project name</sys:String>
     <sys:String x:Key="NewPassw">New password</sys:String>
     <sys:String x:Key="Password">Password</sys:String>
     <sys:String x:Key="PlusProj">+ Project</sys:String>
@@ -28,7 +29,6 @@
     <sys:String x:Key="Edit">Edit</sys:String>
     <sys:String x:Key="Created">Created</sys:String>
     <sys:String x:Key="NoDescription">(no description)</sys:String>
-    <sys:String x:Key="SelectProject">👈 Select a project on the left to see details and tasks</sys:String>
     <sys:String x:Key="ID">ID</sys:String>
     <sys:String x:Key="TaskCreated">Created</sys:String>
     <sys:String x:Key="MainWindow">Main Window</sys:String>
@@ -49,5 +49,15 @@
     <sys:String x:Key="EnterCredentials">Enter login and password</sys:String>
     <sys:String x:Key="InvalidLoginOrPassword">Invalid login or password</sys:String>
     <sys:String x:Key="LoginSuccess">Login successful</sys:String>
+
+    <sys:String x:Key="DbReadFailed">Failed to read from database.</sys:String>
+    <sys:String x:Key="DbAddFailed">Failed to add record to database.</sys:String>
+    <sys:String x:Key="DbDeleteFailed">Failed to delete record.</sys:String>
+    <sys:String x:Key="DbSaveFailed">Failed to save changes.</sys:String>
+    <sys:String x:Key="ProjectNameEmpty">Project name cannot be empty.</sys:String>
+    <sys:String x:Key="TaskNameEmpty">Task name cannot be empty.</sys:String>
+    <sys:String x:Key="UnexpectedError">An unexpected error occurred.</sys:String>
+    <sys:String x:Key="PasswordEmpty">Password cannot be empty</sys:String>
+    <sys:String x:Key="UserNotFound">User not found</sys:String>
 
 </ResourceDictionary>
